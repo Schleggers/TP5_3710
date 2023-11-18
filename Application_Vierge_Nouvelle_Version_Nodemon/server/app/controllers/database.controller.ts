@@ -10,7 +10,8 @@
       // @ts-ignore -- À ENLEVER LORSQUE L'IMPLÉMENTATION EST TERMINÉE
       @inject(Types.DatabaseService) private readonly databaseService: DatabaseService
     ) {
-      this.handleGet();
+      this.handleGetPatients();
+      this.handleGetMedecins();
     }
 
 
@@ -19,7 +20,7 @@
     //   return router;
     // } 
 
-    async handleGet() {
+    async handleGetPatients() {
       this.router.get('/patients', async (req, res) => {
         try {
           const result = await this.databaseService.query('SELECT * FROM patients');
@@ -29,5 +30,17 @@
         }  
       });
 
-    } 
+    }
+    
+    async handleGetMedecins() {
+      this.router.get('/medecins', async (req, res) => {
+        try {
+          const result = await this.databaseService.query('SELECT * FROM medecins');
+          res.json(result.rows);
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }  
+      });
+
+    }
 }

@@ -8,10 +8,15 @@ import { AppComponent } from "./app.component";
 import { CommunicationService } from "./services/communication.service";
 import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MedecinComponent } from './components/medecin/medecin.component';
+import { MatTableModule } from "@angular/material/table";
+import { ListeMedecinsPageComponent } from './pages/liste-medecins-page/liste-medecins-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MedecinComponent,
+    ListeMedecinsPageComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MatTableModule
   ],
   providers: [CommunicationService],
   entryComponents: [],
