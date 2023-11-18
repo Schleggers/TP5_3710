@@ -52,6 +52,7 @@
 # ignore all files starting with . or ~
 .*
 ~*
+/client/package-lock.json
 
 # ignore node/grunt dependency directories
 node_modules/
