@@ -24,4 +24,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submit() {
+    console.log('WAKE UP');
+  }
 }
