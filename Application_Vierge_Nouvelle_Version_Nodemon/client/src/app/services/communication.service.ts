@@ -25,6 +25,18 @@ export class CommunicationService {
     return this.http.get<Medecin[]>(`${this.BASE_URL}/medecins`).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
   }
 
+  addMedecins(medecin: Medecin): Observable<unknown> {
+    return this.http.post(`${this.BASE_URL}/medecins`, medecin).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
+  }
+
+  modifyMedecin(medecin: Medecin): Observable<unknown> {
+    return this.http.patch(`${this.BASE_URL}/medecins`, medecin).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
+  }
+
+  deleteMedecin(id: number): Observable<unknown> {
+    return this.http.delete(`${this.BASE_URL}/medecins/${id}`).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
+  }
+
   // À DÉCOMMENTER ET À UTILISER LORSQUE VOTRE COMMUNICATION EST IMPLÉMENTÉE
   private handleError<T>(
     request: string,
