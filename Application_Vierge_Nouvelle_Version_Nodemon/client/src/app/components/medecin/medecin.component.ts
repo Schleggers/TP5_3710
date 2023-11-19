@@ -12,7 +12,7 @@ export class MedecinComponent implements OnInit {
   displayedColumns: string[];
   constructor(private readonly communication: CommunicationService) {
     this.medecins = [];
-    this.displayedColumns = ['idmedecin', 'prenom', 'nom', 'specialite', 'anneesexperience', 'idservice'];
+    this.displayedColumns = ['idmedecin', 'prenom', 'nom', 'specialite', 'anneesexperience', 'idservice', 'actions'];
   }
 
   ngOnInit(): void {

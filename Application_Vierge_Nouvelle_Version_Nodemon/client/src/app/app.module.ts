@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MedecinComponent } from './components/medecin/medecin.component';
 import { MatTableModule } from "@angular/material/table";
 import { ListeMedecinsPageComponent } from './pages/liste-medecins-page/liste-medecins-page.component';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ListeMedecinsPageComponent } from './pages/liste-medecins-page/liste-me
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [CommunicationService],
   entryComponents: [],

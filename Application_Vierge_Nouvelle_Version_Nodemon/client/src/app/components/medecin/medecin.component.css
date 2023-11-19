@@ -1,3 +1,23 @@
 table {
     width: 100%;
   }
+
+.mat-elevation-z0 {
+  background-color: #212529;
+}
+
+.mat-cell {
+  color: white;
+  border-bottom: 1px solid rgba(154, 117, 240, 1);
+}
+
+.mat-header-cell {
+  color: white;
+  border-bottom: 1px solid rgba(154, 117, 240, 1);
+}
+
+.mat-row {
+  border-bottom: 1px solid rgba(154, 117, 240, 1);
+}
+
+  
