@@ -26,5 +26,17 @@ export class MedecinComponent implements OnInit {
     });
   }
 
+  removeMedecin(id: number): void {
+    console.log(id);
+    this.communication.deleteMedecin(id).subscribe({
+      next: () => {
+        this.medecins = this.medecins.filter((medecin) => medecin.idmedecin !== id);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
 
 }
