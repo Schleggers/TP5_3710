@@ -28,22 +28,27 @@
         <td mat-cell *matCellDef="let element"> {{element.anneesexperience}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="idservice">
-        <th mat-header-cell *matHeaderCellDef> ID Service  </th>
-        <td mat-cell *matCellDef="let element"> {{element.idservice}} </td>
+    <ng-container matColumnDef="nomservice">
+        <th mat-header-cell *matHeaderCellDef> Nom Service  </th>
+        <td mat-cell *matCellDef="let element"> {{element.nomservice}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions  </th>
+    <ng-container matColumnDef="modifier">
+      <th mat-header-cell *matHeaderCellDef> Modifier  </th>
       <td mat-cell *matCellDef="let element">
         <button mat-fab color="primary">
           <mat-icon>delete</mat-icon>
         </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="supprimer">
+      <th mat-header-cell *matHeaderCellDef> Supprimer  </th>
+      <td mat-cell *matCellDef="let element">
         <button mat-fab color="primary">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
-  </ng-container>
+    </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
