@@ -20,4 +20,15 @@ table {
   border-bottom: 1px solid rgba(154, 117, 240, 1);
 }
 
+.bouton {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+mat-icon {
+  line-height: 0.25 !important;
+}
+
+
+
   
