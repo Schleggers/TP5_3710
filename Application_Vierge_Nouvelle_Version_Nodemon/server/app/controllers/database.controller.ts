@@ -64,17 +64,34 @@
 
     async handleDeleteMedecins() {
       this.router.delete('/medecins/:id', async (req, res) => {
+        // try {
+        //   const idMedecin = req.params.id;
+        //   const result = await this.databaseService.query(
+        //     "DELETE FROM Medecins WHERE idMedecin = $1 RETURNING *",
+        //     [idMedecin]
+        //   );
+        //   res.json(result.rows[0]);
+        // } catch (error) {
+        //   res.status(500).json({ error: error.message });
+        // }  
+
         try {
           const idMedecin = req.params.id;
+          await this.databaseService.query('BEGIN');
+          await this.databaseService.query(
+            "DELETE FROM Rendezvous WHERE idMedecin = $1",
+            [idMedecin]
+          );
           const result = await this.databaseService.query(
             "DELETE FROM Medecins WHERE idMedecin = $1 RETURNING *",
             [idMedecin]
           );
+          await this.databaseService.query('COMMIT');
           res.json(result.rows[0]);
         } catch (error) {
+          await this.databaseService.query('ROLLBACK');
           res.status(500).json({ error: error.message });
         }  
       });
-    }
-    
+  }
 }
