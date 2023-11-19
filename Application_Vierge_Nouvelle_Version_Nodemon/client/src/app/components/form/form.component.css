@@ -14,3 +14,16 @@
 .container-form {
     padding: 0vh 5vw;
 }
+
+.add-button {
+    margin-top:3vh;
+    background-color:#673ab7;
+    color: white;
+    padding: 0vh 4vw;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
