@@ -1,0 +1,16 @@
+.form {
+    display: block;
+}
+
+.container-button {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.opacity-icon {
+    opacity: 50%;
+}
+
+.container-form {
+    padding: 0vh 5vw;
+}

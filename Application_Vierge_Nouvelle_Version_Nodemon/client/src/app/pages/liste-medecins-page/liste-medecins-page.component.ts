@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormComponent } from 'src/app/components/form/form.component';
 
 @Component({
   selector: 'app-liste-medecins-page',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeMedecinsPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    this.dialog.open(FormComponent);
   }
 
 }

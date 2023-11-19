@@ -13,12 +13,16 @@ import { MatTableModule } from "@angular/material/table";
 import { ListeMedecinsPageComponent } from './pages/liste-medecins-page/liste-medecins-page.component';
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { FormComponent } from './components/form/form.component';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     MedecinComponent,
-    ListeMedecinsPageComponent
+    ListeMedecinsPageComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { MatIconModule } from "@angular/material/icon";
     AppMaterialModule,
     MatTableModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule, 
+    MatInputModule,
   ],
   providers: [CommunicationService],
   entryComponents: [],

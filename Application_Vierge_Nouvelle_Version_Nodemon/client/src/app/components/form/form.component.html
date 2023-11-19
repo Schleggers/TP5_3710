@@ -1,0 +1,33 @@
+<div class = container-button>
+    <mat-icon mat-dialog-close class="opacity-icon">close</mat-icon>
+</div>
+<div class="container-form">
+    <mat-form-field class="form">
+        <mat-label>ID Médecin</mat-label>
+        <input matInput [(ngModel)]="idMedecin" type = "number" min="0">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Prénom</mat-label>
+        <input matInput [(ngModel)]="firstName">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Nom</mat-label>
+        <input matInput [(ngModel)]="lastName">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Spécialité</mat-label>
+        <mat-select [(ngModel)]="speciality">
+            <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>Années Expérience</mat-label>
+        <input matInput [(ngModel)]="yearOfExperience" type = "number" min="0">
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-label>ID Service</mat-label>
+        <input matInput [(ngModel)]="idService" type = "number" min="0">
+    </mat-form-field>
+</div>
