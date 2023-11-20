@@ -16,13 +16,19 @@ import { MatIconModule } from "@angular/material/icon";
 import { FormComponent } from './components/form/form.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { DeletePageComponent } from './pages/delete-page/delete-page.component';
+import { ModifyPageComponent } from './pages/modify-page/modify-page.component';
+import { CreatePageComponent } from './pages/create-page/create-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MedecinComponent,
     ListeMedecinsPageComponent,
-    FormComponent
+    FormComponent,
+    DeletePageComponent,
+    ModifyPageComponent,
+    CreatePageComponent
   ],
   imports: [
     CommonModule,

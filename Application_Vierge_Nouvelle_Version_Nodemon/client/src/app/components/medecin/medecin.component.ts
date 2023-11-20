@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Medecin } from 'src/app/intefaces/medecin';
 import { CommunicationService } from 'src/app/services/communication.service';
@@ -10,17 +10,24 @@ import { FormComponent } from '../form/form.component';
   styleUrls: ['./medecin.component.css']
 })
 export class MedecinComponent implements OnInit {
+  @Input() page: string;
   medecins: Medecin[];
   displayedColumns: string[];
   constructor(private readonly communication: CommunicationService, private readonly dialog: MatDialog) {
     this.medecins = [];
-    this.displayedColumns = ['idmedecin', 'prenom', 'nom', 'specialite', 'anneesexperience', 'nomservice', 'modifier' , 'supprimer'];
+    this.displayedColumns = ['idmedecin', 'prenom', 'nom', 'specialite', 'anneesexperience', 'idservice', 'nomservice'];
   }
-
+  
   ngOnInit(): void {
+    if (this.page === 'delete') {
+      this.displayedColumns.push('supprimer');
+    } else if (this.page === 'modify') {
+      this.displayedColumns.push('modifier');
+    }
     this.communication.getAllMedecins().subscribe({
       next: (medecins) => {
         this.medecins = medecins;
+        console.log(medecins);
       },
       error: (error) => {
         console.log(error);
