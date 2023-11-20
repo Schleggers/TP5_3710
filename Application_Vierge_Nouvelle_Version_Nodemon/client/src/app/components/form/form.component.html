@@ -5,7 +5,7 @@
 <form class="container-form" (ngSubmit)="submit()" [formGroup]="registerForm">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
-        <input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" required>
+        <input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" max="2147483647" required>
     </mat-form-field>
 
     <mat-form-field class="form">
@@ -29,7 +29,7 @@
 
     <mat-form-field class="form">
         <mat-label>Années Expérience</mat-label>
-        <input matInput formControlName="yearOfExperience" type="number" min="0" required>
+        <input matInput formControlName="yearOfExperience" type="number" min="0" max="100" required>
     </mat-form-field>
 
     <mat-form-field class="form">
