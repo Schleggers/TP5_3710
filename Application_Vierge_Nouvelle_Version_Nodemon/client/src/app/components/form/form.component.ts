@@ -14,11 +14,14 @@ export class FormComponent implements OnInit {
   options: string[];
   registerForm: FormGroup;
   services : Service[];
+  error: boolean;
 
   constructor(@Inject (MAT_DIALOG_DATA) public data: Medecin, 
   private readonly communicationService: CommunicationService,
   private formBuilder: FormBuilder,
-  public dialogRef: MatDialogRef<FormComponent>) {}
+  public dialogRef: MatDialogRef<FormComponent>) {
+    this.error = false;
+  }
 
   ngOnInit(): void {
     if (this.data) {
@@ -40,6 +43,7 @@ export class FormComponent implements OnInit {
         idService: [8, Validators.required]
       });
     }
+    this.registerForm.get('idMedecin')?.valueChanges.subscribe(() => { this.error = false; });
     this.options = ['Ophtalmologie', 'Dermatologie', 'Neurologie', 'Orthopédie', 'Psychiatrie','Cardiologie', 'Pédiatrie', 'Chirurgie', 'Gynécologie', 'Radiologie'];
     this.services = [];
     this.communicationService.getAllServices().subscribe({
@@ -59,8 +63,8 @@ export class FormComponent implements OnInit {
           next: () => {
             this.dialogRef.close(this.registerForm.value);
           },
-          error: (error) => {
-            console.log(error);
+          error: () => {
+            this.error = true;
           }
         });
       } else {
@@ -68,8 +72,8 @@ export class FormComponent implements OnInit {
           next: () => {
             this.dialogRef.close(this.registerForm.value);
               },
-          error: (error) => {
-            console.log(error);
+          error: () => {
+            this.error = true;
           }
         });
       }

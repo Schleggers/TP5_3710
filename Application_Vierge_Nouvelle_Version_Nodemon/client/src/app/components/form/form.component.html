@@ -41,6 +41,9 @@
         </mat-select>
     </mat-form-field>
 
+    <p *ngIf="error" class="p">
+        Le id est déjà existant dans la base de données veuillez en choisir un autre
+    </p>
     <div class="button-container">
         <button mat-raised-button class="add-button" type="submit">Envoyer</button>
     </div>
