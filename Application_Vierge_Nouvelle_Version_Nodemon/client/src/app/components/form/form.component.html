@@ -1,22 +1,22 @@
 <div class = container-button>
     <mat-icon mat-dialog-close class="opacity-icon">close</mat-icon>
 </div>
-<form class="container-form" (submit)="submit()">
+<form class="container-form" (submit)="submit()"  [formGroup]="registerForm">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
-        <input matInput name="idMedecin" [readonly]="data" [(ngModel)]="medecin.idmedecin" type = "number" min="0" required>
+        <input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Prénom</mat-label>
-        <input matInput name="firstName" [(ngModel)]="medecin.prenom" required>
+        <input matInput formControlName="firstName" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Nom</mat-label>
-        <input matInput [(ngModel)]="medecin.nom" maxlength="50" required>
+        <input matInput formControlName="lastName" maxlength="50" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Spécialité</mat-label>
-        <mat-select name="speciality" [(ngModel)]="medecin.specialite" required>
+        <mat-select formControlName="speciality" required>
             <mat-option *ngFor="let option of options" [value]="option">
                 {{option}}
             </mat-option>
@@ -24,14 +24,14 @@
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Années Expérience</mat-label>
-        <input matInput name="yearOfExperience" [(ngModel)]="medecin.anneesexperience" type = "number" min="0" required>
+        <input matInput formControlName="yearOfExperience" type="number" min="0" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>ID Service</mat-label>
-        <input matInput name="idService" [(ngModel)]="medecin.idservice" type = "number" min="0" required>
+        <input matInput formControlName="idService" type = "number" min="0" required>
     </mat-form-field>
 </form>
 <div class="button-container">
-    <button mat-raised-button class="add-button" type="submit" (click)="submit()">Envoyer</button>
+    <button mat-raised-button class="add-button" type="submit">Envoyer</button>
 </div>
 
