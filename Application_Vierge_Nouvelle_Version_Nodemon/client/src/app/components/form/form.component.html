@@ -1,14 +1,14 @@
 <div class = container-button>
     <mat-icon mat-dialog-close class="opacity-icon">close</mat-icon>
 </div>
-<div class="container-form">
+<form class="container-form">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
-        <input matInput [(ngModel)]="idMedecin" type = "number" min="0">
+        <input matInput name="idMedecin" [(ngModel)]="medecin.idmedecin" type = "number" min="0" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Prénom</mat-label>
-        <input matInput [(ngModel)]="firstName">
+        <input matInput name="firstName" [(ngModel)]="medecin.prenom" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Nom</mat-label>
@@ -16,21 +16,21 @@
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Spécialité</mat-label>
-        <mat-select [(ngModel)]="speciality">
-            <mat-option *ngFor="let option of options" [value]="option">
+        <mat-select name="speciality" [(ngModel)]="medecin.specialite">
+            <mat-option *ngFor="let option of options" [value]="option" required>
                 {{option}}
             </mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Années Expérience</mat-label>
-        <input matInput [(ngModel)]="yearOfExperience" type = "number" min="0">
+        <input matInput name="yearOfExperience" [(ngModel)]="medecin.anneesexperience" type = "number" min="0" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>ID Service</mat-label>
-        <input matInput [(ngModel)]="idService" type = "number" min="0">
+        <input matInput name="idService" [(ngModel)]="medecin.idservice" type = "number" min="0" required>
     </mat-form-field>
-</div>
+</form>
 <div class="button-container">
     <button mat-raised-button class="add-button" (click)="submit()">Envoyer</button>
 </div>

@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Medecin } from 'src/app/intefaces/medecin';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
   selector: 'app-form',
@@ -6,25 +9,28 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-
-  @Input() idMedecin: number;
-  @Input() lastName: string;
-  @Input() firstName: string;
-  @Input() idService: number;
-  @Input() yearOfExperience: number;
-  @Input() speciality: string;
+  medecin: Medecin;
   options: string[];
-  constructor() { 
-    this.lastName = '';
-    this.firstName = '';
-    this.speciality = '';
-    this.options = ['Ophtalmologie', 'Dermatologie', 'Neurologie', 'Orthopédie', 'Psychiatrie','Cardiologie', 'Pédiatrie', 'Chirurgie', 'Gynécologie', 'Radiologie'];
+  constructor(@Inject (MAT_DIALOG_DATA) public data: Medecin, private readonly communicationService: CommunicationService) {
+    this.medecin = { idmedecin: 0, nom: "", prenom: "", specialite: "", anneesexperience: 0, idservice: 0 };
   }
 
   ngOnInit(): void {
+    if (this.data) {
+      this.medecin.idmedecin = this.data.idmedecin;
+      this.medecin.nom = this.data.nom;
+      this.medecin.prenom = this.data.prenom;
+      this.medecin.specialite = this.data.specialite;
+      this.medecin.anneesexperience = this.data.anneesexperience;
+    }
+    this.options = ['Ophtalmologie', 'Dermatologie', 'Neurologie', 'Orthopédie', 'Psychiatrie','Cardiologie', 'Pédiatrie', 'Chirurgie', 'Gynécologie', 'Radiologie'];
   }
 
   submit() {
-    console.log('WAKE UP');
+    if (this.data) {
+      this.communicationService.modifyMedecin(this.medecin);
+    } else {
+      this.communicationService.addMedecins(this.medecin);
+    }
   }
 }
