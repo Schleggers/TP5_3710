@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from 'src/app/components/form/form.component';
+import { MedecinComponent } from 'src/app/components/medecin/medecin.component';
 
 @Component({
   selector: 'app-liste-medecins-page',
@@ -8,14 +9,19 @@ import { FormComponent } from 'src/app/components/form/form.component';
   styleUrls: ['./liste-medecins-page.component.css']
 })
 export class ListeMedecinsPageComponent implements OnInit {
-
+  @ViewChild("medecin") medecin : MedecinComponent;
   constructor(private readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   openDialog(): void {
-    this.dialog.open(FormComponent);
+    const dialogRef = this.dialog.open(FormComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.medecin.ngOnInit();
+      }
+    });
   }
 
 }

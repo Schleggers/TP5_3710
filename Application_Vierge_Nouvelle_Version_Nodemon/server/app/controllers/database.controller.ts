@@ -26,7 +26,7 @@ export class DatabaseController {
       try {
         console.log("post");
         console.log(req.body);
-        const results = await this.databaseService.postMedecins(req.body.idMedecin, req.body.prenom, req.body.nom, req.body.specialite, req.body.anneesExperience, req.body.idService);
+        const results = await this.databaseService.postMedecins(req.body.idMedecin, req.body.firstName, req.body.lastName, req.body.speciality, req.body.yearOfExperience, req.body.idService);
         res.json(results.rows[0]);
       } catch (error) {
         res.status(500).json({ error: error.message });
@@ -34,10 +34,10 @@ export class DatabaseController {
     });
 
    
-    router.patch('/medecins/:id', async (req: Request, res: Response) => {
+    router.patch('/medecins', async (req: Request, res: Response) => {
       try {
         console.log(req.body);
-        const results = await this.databaseService.patchMedecins(parseInt(req.params.id), req.body.prenom, req.body.nom, req.body.specialite, req.body.anneesExperience, req.body.idService);
+        const results = await this.databaseService.patchMedecins(req.body.idMedecin, req.body.firstName, req.body.lastName, req.body.speciality, req.body.yearOfExperience, req.body.idService);
         res.json(results.rows[0]);
       } catch (error) {
         res.status(500).json({ error: error.message });

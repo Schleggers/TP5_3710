@@ -41,7 +41,12 @@ export class MedecinComponent implements OnInit {
   }
 
   editMedecin(medecin: Medecin) {
-    this.dialog.open(FormComponent, {data: medecin});
+    const dialogRef = this.dialog.open(FormComponent, {data: medecin});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.ngOnInit();
+      }
+    });
   }
 
 

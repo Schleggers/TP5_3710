@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Medecin } from 'src/app/intefaces/medecin';
-//import { CommunicationService } from 'src/app/services/communication.service';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
   selector: 'app-form',
@@ -14,8 +14,9 @@ export class FormComponent implements OnInit {
   registerForm: FormGroup;
   
   constructor(@Inject (MAT_DIALOG_DATA) public data: Medecin, 
-  //private readonly communicationService: CommunicationService,
-  private formBuilder: FormBuilder) {}
+  private readonly communicationService: CommunicationService,
+  private formBuilder: FormBuilder,
+  public dialogRef: MatDialogRef<FormComponent>) {}
 
   ngOnInit(): void {
     if (this.data) {
@@ -42,12 +43,27 @@ export class FormComponent implements OnInit {
 
   submit() {
     console.log(this.registerForm.value);
+    console.log('AOSIDFH');
     if (this.data) {
       console.log("modify");
-      //this.communicationService.modifyMedecin(this.medecin);
+      this.communicationService.modifyMedecin(this.registerForm.value).subscribe({
+        next: () => {
+          this.dialogRef.close(this.registerForm.value);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
     } else {
       console.log("add");
-      //this.communicationService.addMedecins(this.medecin);
+      this.communicationService.addMedecins(this.registerForm.value).subscribe({
+        next: () => {
+          this.dialogRef.close(this.registerForm.value);
+            },
+        error: (error) => {
+          console.log(error);
+        }
+      });
     }
   }
 }

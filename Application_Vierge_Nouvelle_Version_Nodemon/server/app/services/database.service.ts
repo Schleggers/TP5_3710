@@ -22,7 +22,7 @@ export class DatabaseService {
   public async getMedecins(): Promise<pg.QueryResult> {
     const server = await this.pool.connect();
     const answer = await server.query(
-      "SELECT M.idMedecin, M.prenom, M.nom, M.specialite, M.anneesExperience, M.idService, S.nomService FROM Medecins M JOIN Services S ON M.idService = S.idService"
+      "SELECT M.idMedecin, M.prenom, M.nom, M.specialite, M.anneesExperience, M.idService, S.nomService FROM Medecins M JOIN Services S ON M.idService = S.idService ORDER BY M.idMedecin ASC"
     );
     server.release();
     return answer;
