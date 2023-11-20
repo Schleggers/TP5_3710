@@ -53,24 +53,26 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    if (this.data) {
-      this.communicationService.modifyMedecin(this.registerForm.value).subscribe({
-        next: () => {
-          this.dialogRef.close(this.registerForm.value);
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-    } else {
-      this.communicationService.addMedecins(this.registerForm.value).subscribe({
-        next: () => {
-          this.dialogRef.close(this.registerForm.value);
-            },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+    if (this.registerForm.valid) {
+      if (this.data) {
+        this.communicationService.modifyMedecin(this.registerForm.value).subscribe({
+          next: () => {
+            this.dialogRef.close(this.registerForm.value);
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
+      } else {
+        this.communicationService.addMedecins(this.registerForm.value).subscribe({
+          next: () => {
+            this.dialogRef.close(this.registerForm.value);
+              },
+          error: (error) => {
+            console.log(error);
+          }
+        });
+      }
     }
   }
 }
