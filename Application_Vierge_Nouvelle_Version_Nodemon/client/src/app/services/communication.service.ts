@@ -31,7 +31,6 @@ export class CommunicationService {
   }
 
   addMedecins(medecin: Medecin): Observable<unknown> {
-    console.log(medecin)
     return this.http.post(`${this.BASE_URL}/medecins`, medecin).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
   }
 

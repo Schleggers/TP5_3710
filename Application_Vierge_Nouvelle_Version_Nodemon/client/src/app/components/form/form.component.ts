@@ -53,10 +53,7 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.registerForm.value);
-    console.log('AOSIDFH');
     if (this.data) {
-      console.log("modify");
       this.communicationService.modifyMedecin(this.registerForm.value).subscribe({
         next: () => {
           this.dialogRef.close(this.registerForm.value);
@@ -66,7 +63,6 @@ export class FormComponent implements OnInit {
         }
       });
     } else {
-      console.log("add");
       this.communicationService.addMedecins(this.registerForm.value).subscribe({
         next: () => {
           this.dialogRef.close(this.registerForm.value);

@@ -34,8 +34,6 @@ export class DatabaseController {
 
     router.post('/medecins', async (req: Request, res: Response) => {
       try {
-        console.log("post");
-        console.log(req.body);
         const results = await this.databaseService.postMedecins(req.body.idMedecin, req.body.firstName, req.body.lastName, req.body.speciality, req.body.yearOfExperience, req.body.idService);
         res.json(results.rows[0]);
       } catch (error) {
@@ -46,7 +44,6 @@ export class DatabaseController {
    
     router.patch('/medecins', async (req: Request, res: Response) => {
       try {
-        console.log(req.body);
         const results = await this.databaseService.patchMedecins(req.body.idMedecin, req.body.firstName, req.body.lastName, req.body.speciality, req.body.yearOfExperience, req.body.idService);
         res.json(results.rows[0]);
       } catch (error) {
