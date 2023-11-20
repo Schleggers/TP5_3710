@@ -1,7 +1,7 @@
 <div class = container-button>
     <mat-icon mat-dialog-close class="opacity-icon">close</mat-icon>
 </div>
-<form class="container-form">
+<form class="container-form" (submit)="submit()">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
         <input matInput name="idMedecin" [readonly]="data" [(ngModel)]="medecin.idmedecin" type = "number" min="0" required>
@@ -32,6 +32,6 @@
     </mat-form-field>
 </form>
 <div class="button-container">
-    <button mat-raised-button class="add-button" (click)="submit()">Envoyer</button>
+    <button mat-raised-button class="add-button" type="submit" (click)="submit()">Envoyer</button>
 </div>
 

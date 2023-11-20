@@ -34,10 +34,12 @@ export class DatabaseController {
   async handlePostMedecins() {
     this.router.post('/medecins', async (req, res) => {
       try {
-        const { prenom, nom, specialite, anneesExperience, idService } = req.body;
+        console.log("post");
+        
+        const { idmedecin, prenom, nom, specialite, anneesExperience, idService } = req.body;
         const result = await this.databaseService.query(
-          "INSERT INTO Medecins (prenom, nom, specialite, anneesExperience, idService) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-          [prenom, nom, specialite, anneesExperience, idService]
+          "INSERT INTO Medecins (idmedecin, prenom, nom, specialite, anneesExperience, idService) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+          [idmedecin, prenom, nom, specialite, anneesExperience, idService]
         );
         res.json(result.rows[0]);
       } catch (error) {

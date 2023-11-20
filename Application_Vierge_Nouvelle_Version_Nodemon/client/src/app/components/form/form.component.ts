@@ -27,9 +27,12 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.medecin);
     if (this.data) {
+      console.log("modify");
       this.communicationService.modifyMedecin(this.medecin);
     } else {
+      console.log("add");
       this.communicationService.addMedecins(this.medecin);
     }
   }
