@@ -17,7 +17,7 @@ export class CreatePageComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(FormComponent);
+    const dialogRef = this.dialog.open(FormComponent, {width: '30vw'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.medecin.ngOnInit();

@@ -29,6 +29,10 @@ mat-icon {
   line-height: 0.25 !important;
 }
 
+mat-dialog-container {
+  width: 45vw !important;
+  height: 45vh !important;
+}
 
 
   

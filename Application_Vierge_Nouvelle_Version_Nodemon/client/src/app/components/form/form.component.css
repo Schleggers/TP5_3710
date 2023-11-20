@@ -17,13 +17,15 @@
     flex-direction: column !important;
     justify-content: space-around !important;
     height: 80% !important;
+    text-align: center;
 
 }
 
-.mat-dialog-container {
-    width: 40vw !important;
+mat-dialog-container {
+    width: 45vw !important;
     height: 45vh !important;
 }
+
 .add-button {
     margin-top:3vh;
     background-color:#673ab7;

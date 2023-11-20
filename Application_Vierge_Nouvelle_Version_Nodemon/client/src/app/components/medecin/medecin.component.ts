@@ -51,7 +51,7 @@ export class MedecinComponent implements OnInit {
   }
 
   editMedecin(medecin: Medecin) {
-    const dialogRef = this.dialog.open(FormComponent, {data: medecin});
+    const dialogRef = this.dialog.open(FormComponent, {data: medecin, width: '30vw'});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getMedecin();
