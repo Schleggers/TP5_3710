@@ -33,11 +33,11 @@ export class FormComponent implements OnInit {
     } else {
       this.registerForm = this.formBuilder.group({
         idMedecin: [0, Validators.required],
-        firstName: ["", Validators.required],
-        lastName: ["", Validators.required],
-        speciality: ["", Validators.required],
-        yearOfExperience: [0, Validators.required],
-        idService: [0, Validators.required]
+        firstName: ["John", Validators.required],
+        lastName: ["Doe", Validators.required],
+        speciality: ["Gynécologie", Validators.required],
+        yearOfExperience: [10, Validators.required],
+        idService: [8, Validators.required]
       });
     }
     this.options = ['Ophtalmologie', 'Dermatologie', 'Neurologie', 'Orthopédie', 'Psychiatrie','Cardiologie', 'Pédiatrie', 'Chirurgie', 'Gynécologie', 'Radiologie'];
