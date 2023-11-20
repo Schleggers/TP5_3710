@@ -4,7 +4,7 @@
 <form class="container-form">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
-        <input matInput name="idMedecin" [(ngModel)]="medecin.idmedecin" type = "number" min="0" required>
+        <input matInput name="idMedecin" [readonly]="data" [(ngModel)]="medecin.idmedecin" type = "number" min="0" required>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-label>Prénom</mat-label>
