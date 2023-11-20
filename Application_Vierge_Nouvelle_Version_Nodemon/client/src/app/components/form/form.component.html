@@ -1,19 +1,23 @@
 <div class = container-button>
     <mat-icon mat-dialog-close class="opacity-icon">close</mat-icon>
 </div>
+
 <form class="container-form" (ngSubmit)="submit()" [formGroup]="registerForm">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
         <input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" required>
     </mat-form-field>
+
     <mat-form-field class="form">
         <mat-label>Prénom</mat-label>
         <input matInput formControlName="firstName" required>
     </mat-form-field>
+
     <mat-form-field class="form">
         <mat-label>Nom</mat-label>
         <input matInput formControlName="lastName" maxlength="50" required>
     </mat-form-field>
+
     <mat-form-field class="form">
         <mat-label>Spécialité</mat-label>
         <mat-select formControlName="speciality" required>
@@ -22,14 +26,21 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+
     <mat-form-field class="form">
         <mat-label>Années Expérience</mat-label>
         <input matInput formControlName="yearOfExperience" type="number" min="0" required>
     </mat-form-field>
+
     <mat-form-field class="form">
-        <mat-label>ID Service</mat-label>
-        <input matInput formControlName="idService" type = "number" min="0" required>
+        <mat-label>Service</mat-label>
+        <mat-select formControlName="idService" required>
+            <mat-option *ngFor="let service of services" [value]="service.idservice">
+                {{service.idservice}}: {{service.nomservice}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
+
     <div class="button-container">
         <button mat-raised-button class="add-button" type="submit">Envoyer</button>
     </div>

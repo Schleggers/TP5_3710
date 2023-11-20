@@ -20,6 +20,16 @@ export class DatabaseController {
         res.status(500).json({ error: error.message });
       }  
     });
+
+    router.get('/services', async (req: Request, res: Response) => {
+      try {
+        const results = await this.databaseService.getServices();
+        res.json(results.rows);
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }  
+    });
+   
    
 
     router.post('/medecins', async (req: Request, res: Response) => {

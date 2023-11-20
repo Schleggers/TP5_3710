@@ -24,22 +24,25 @@ export class MedecinComponent implements OnInit {
     } else if (this.page === 'modify') {
       this.displayedColumns.push('modifier');
     }
+    this.getMedecin();
+  }
+
+  getMedecin(): void {
     this.communication.getAllMedecins().subscribe({
       next: (medecins) => {
         this.medecins = medecins;
-        console.log(medecins);
       },
       error: (error) => {
         console.log(error);
       }
     });
   }
-
+  
   removeMedecin(medecin: Medecin): void {
     const id = medecin.idmedecin;
     this.communication.deleteMedecin(id).subscribe({
       next: () => {
-        this.medecins = this.medecins.filter((medecin) => medecin.idmedecin !== id);
+        this.getMedecin();
       },
       error: (error) => {
         console.log(error);
@@ -51,7 +54,7 @@ export class MedecinComponent implements OnInit {
     const dialogRef = this.dialog.open(FormComponent, {data: medecin});
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.ngOnInit();
+        this.getMedecin();
       }
     });
   }

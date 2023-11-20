@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Medecin } from 'src/app/intefaces/medecin';
+import { Service } from 'src/app/intefaces/service';
 import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
@@ -12,7 +13,8 @@ import { CommunicationService } from 'src/app/services/communication.service';
 export class FormComponent implements OnInit {
   options: string[];
   registerForm: FormGroup;
-  
+  services : Service[];
+
   constructor(@Inject (MAT_DIALOG_DATA) public data: Medecin, 
   private readonly communicationService: CommunicationService,
   private formBuilder: FormBuilder,
@@ -39,6 +41,15 @@ export class FormComponent implements OnInit {
       });
     }
     this.options = ['Ophtalmologie', 'Dermatologie', 'Neurologie', 'Orthopédie', 'Psychiatrie','Cardiologie', 'Pédiatrie', 'Chirurgie', 'Gynécologie', 'Radiologie'];
+    this.services = [];
+    this.communicationService.getAllServices().subscribe({
+      next: (services) => {
+        this.services = services;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   submit() {

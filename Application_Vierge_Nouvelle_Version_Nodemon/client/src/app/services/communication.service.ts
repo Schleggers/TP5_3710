@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, catchError, of } from "rxjs";
 import { Medecin } from "../intefaces/medecin";
+import { Service } from "../intefaces/service";
 
 @Injectable()
 export class CommunicationService {
@@ -23,6 +24,10 @@ export class CommunicationService {
 
   getAllMedecins(): Observable<Medecin[]> {
     return this.http.get<Medecin[]>(`${this.BASE_URL}/medecins`).pipe(catchError(this.handleError(`${this.BASE_URL}/medecins`, [])));
+  }
+
+  getAllServices(): Observable<Service[]> {
+    return this.http.get<Service[]>(`${this.BASE_URL}/services`).pipe(catchError(this.handleError(`${this.BASE_URL}/services`, [])));
   }
 
   addMedecins(medecin: Medecin): Observable<unknown> {

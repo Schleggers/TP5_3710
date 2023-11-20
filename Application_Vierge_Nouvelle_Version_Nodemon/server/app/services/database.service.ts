@@ -28,6 +28,15 @@ export class DatabaseService {
     return answer;
   }
 
+  public async getServices(): Promise<pg.QueryResult> {
+    const server = await this.pool.connect();
+    const answer = await server.query(
+      "SELECT * FROM Services ORDER BY idService ASC"
+    );
+    server.release();
+    return answer;
+  }
+
   public async postMedecins(idmedecin: number, prenom: string, nom: string, specialite: string, anneesExperience: number, idService: number): Promise<pg.QueryResult> {
     const server = await this.pool.connect();
     const answer = await server.query(
