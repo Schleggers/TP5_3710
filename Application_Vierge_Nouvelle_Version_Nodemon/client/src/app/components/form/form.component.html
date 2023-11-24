@@ -5,7 +5,8 @@
 <form class="container-form" (ngSubmit)="submit()" [formGroup]="registerForm">
     <mat-form-field class="form">
         <mat-label>ID Médecin</mat-label>
-        <input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" max="2147483647" required>
+        <input input matInput formControlName="idMedecin" [readonly]="data" type = "number" min="0" max="2147483647" required>
+        <mat-icon class="lock" matSuffix *ngIf="data">lock</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="form">

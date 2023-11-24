@@ -11,6 +11,10 @@
     opacity: 50%;
 }
 
+.lock {
+    opacity: 70%;
+}
+
 .container-form {
     padding: 2vh 6vw !important;
     display: flex !important;
