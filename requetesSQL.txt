@@ -64,13 +64,12 @@ WHERE R.dateRendezVous BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '6 month
 GROUP BY M.nom, M.prenom 
 ORDER BY COUNT(DISTINCT R.idPatient) DESC
 LIMIT 1;
-// tous 1
 
 13/
-SELECT nom, prenom 
-FROM Medecins 
-WHERE idMedecin NOT IN (SELECT DISTINCT idMedecin FROM Rendezvous);
-// rien
+SELECT M.prenom, M.nom
+FROM Medecins M
+LEFT JOIN Rendezvous R ON M.idMedecin = R.idMedecin
+WHERE R.idMedecin IS NULL
 
 14/
 SELECT P.nom, P.prenom
@@ -80,10 +79,28 @@ WHERE PE.resultat != 'Résultats normaux'
 GROUP BY P.nom, P.prenom 
 ORDER BY COUNT(PE.idExamen) DESC
 LIMIT 1; 
-// tous 1
 
 15/
-// a voir!!
+SELECT P.prenom, P.nom
+FROM Patients P
+JOIN Rendezvous R ON P.idPatient = R.idPatient
+JOIN Medecins M ON R.idMedecin = M.idMedecin
+JOIN Services S ON M.idService = S.idService
+GROUP BY P.idPatient
+HAVING COUNT(DISTINCT S.idService) = (SELECT COUNT(*) FROM Services)
 
 16/
-// a voir!!
+CREATE VIEW V_TotalExamens AS
+SELECT 
+    P.nom AS V_nom, 
+    P.prenom AS V_prenom, 
+    SUM(E.cout) AS V_tot
+FROM Patients P
+JOIN PatientExamens PE ON P.idPatient = PE.idPatient
+JOIN Examens E ON PE.idExamen = E.idExamen
+WHERE (P.adresse LIKE '___e%' OR P.adresse LIKE '___o%')
+GROUP BY P.idPatient
+HAVING SUM(E.cout) > 500
+ORDER BY P.nom ASC, V_tot DESC;
+// puis
+select * from V_TotalExamens;
